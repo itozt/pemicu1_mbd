@@ -34,7 +34,6 @@ SELECT * FROM temp_priority_1;
 -- Langkah 1.2: Insert ke final_result untuk siswa prioritas 1 yang memenuhi kapasitas
 
 START TRANSACTION;
-
 -- Insert ke final_result
 INSERT INTO final_result (selection_result_registration_id_registration, score, status)
 SELECT 
@@ -47,7 +46,6 @@ JOIN school_registration_path srp
     AND t.path_id = srp.registration_path_id_registration_path
 WHERE 
     t.ranking <= (srp.capacity - srp.used_capacity);
-
 -- Update used_capacity
 UPDATE school_registration_path srp
 JOIN (
@@ -66,7 +64,6 @@ JOIN (
 ) fr ON srp.school_id_school = fr.school_id
     AND srp.registration_path_id_registration_path = fr.path_id
 SET srp.used_capacity = srp.used_capacity + fr.jumlah_lolos;
-
 COMMIT;
 
 SELECT * FROM final_result;
