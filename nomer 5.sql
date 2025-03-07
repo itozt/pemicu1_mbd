@@ -20,11 +20,6 @@ WITH temp_priority_1 AS (
     AND sr.status = 'lolos'
 ),
 
-
-
-
-
-
 final_candidates AS (
   SELECT 
       t.id_registration,
@@ -36,20 +31,10 @@ final_candidates AS (
   WHERE t.ranking <= (srp.capacity - srp.used_capacity)
 )
 
-
-
-
-
-
 -- Insert kandidat final ke final_result
 INSERT INTO final_result (selection_result_registration_id_registration, score, status)
 SELECT id_registration, score, 'lolos'
 FROM final_candidates;
-
-
-
-
-
 
 -- CTE untuk menghitung jumlah siswa yang diterima per sekolah dan jalur
 WITH final_counts AS (
