@@ -78,7 +78,8 @@ SET srp.used_capacity = srp.used_capacity + fc.jumlah_lolos;
 
 
 
--- Update status pendaftaran priority > 1 untuk siswa yang sudah diterima (final_result)
+-- Update status pendaftaran priority > 1 
+-- untuk siswa yang sudah diterima (final_result)
 UPDATE selection_result sr
 JOIN registration r 
   ON sr.registration_id_registration = r.id_registration
